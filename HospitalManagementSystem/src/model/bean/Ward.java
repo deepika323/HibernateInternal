@@ -2,7 +2,13 @@ package model.bean;
 
 import java.sql.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Ward implements Comparable<Ward> {
+	
+	@Id
 	private int bedNo;
 	private String type;
 	private String location;
@@ -11,7 +17,10 @@ public class Ward implements Comparable<Ward> {
 	private String staffId;
 	private int appointmentId;
 	
-	
+	public Ward() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	@Override
 	public String toString() {
 		return "Ward [bedNo=" + bedNo + ", type=" + type + ", location=" + location + ", dateAdmitted=" + dateAdmitted

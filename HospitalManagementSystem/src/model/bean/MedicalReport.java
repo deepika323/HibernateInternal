@@ -2,7 +2,13 @@ package model.bean;
 
 import java.sql.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class MedicalReport implements Comparable<MedicalReport> {
+	
+	@Id
 	private int appointmentId;
 	private Date visitDate;
 	private String diagnosis;
@@ -12,6 +18,12 @@ public class MedicalReport implements Comparable<MedicalReport> {
 	private String recommendations;
 	private String doctorId;
 	private String technicianId;
+	
+	
+	public MedicalReport() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	public String getDoctorId() {
 		return doctorId;
 	}

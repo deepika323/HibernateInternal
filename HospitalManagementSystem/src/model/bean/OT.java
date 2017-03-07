@@ -1,12 +1,23 @@
 package model.bean;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class OT {
+	
+	@Id
 	int otId;
 	String description;
 	String equipments;
 	int patientId;
 	int staffId;
 	String doctorId;
+	
+	public OT() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	
 	public int getStaffId() {
 		return staffId;

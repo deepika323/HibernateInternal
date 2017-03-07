@@ -1,6 +1,12 @@
 package model.bean;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Medicine implements Comparable<Medicine> {
+	
+	@Id
 	private int sNo;
 	private String medicineName;
 	private int quantity;
@@ -8,6 +14,12 @@ public class Medicine implements Comparable<Medicine> {
 	private float price;
 	private int appointmentId;
 	private int billNo;
+	
+	
+	public Medicine() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	public int getsNo() {
 		return sNo;
 	}

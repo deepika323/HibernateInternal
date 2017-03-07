@@ -2,6 +2,10 @@ package model.bean;
 
 import java.sql.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class DischargeSummary implements Comparable<DischargeSummary>{
 	@Override
 	public int hashCode() {
@@ -94,7 +98,14 @@ public class DischargeSummary implements Comparable<DischargeSummary>{
 			return false;
 		return true;
 	}
+	
+	@Id
 	private int serialNo;
+	public DischargeSummary() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	private Date admissionDate;
 	private Date dischargeDate;
 	private String history;

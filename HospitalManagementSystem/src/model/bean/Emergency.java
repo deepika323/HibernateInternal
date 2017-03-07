@@ -2,12 +2,25 @@ package model.bean;
 
 import java.sql.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Emergency {
+	
+	
 	int emergencyPatientId;
 	Date dateOfAdmission;
 	String operationDone;
 	String treatment;
+	@Id
 	int regNo;
+	
+	
+	public Emergency() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	public int getEmergencyPatientId() {
 		return emergencyPatientId;
 	}

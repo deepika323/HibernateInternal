@@ -1,12 +1,25 @@
 package model.bean;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Doctor implements Comparable<Doctor>{
+	
+	@Id
 	private String doctorId;
 	private String doctorName;
 	private String specialization;
 	private String timing;
 	private String doctorAddress;
 	private long doctorPhoneNo;
+	
+	
+	public Doctor() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
 	public int getDepartmentId() {
 		return departmentId;
 	}

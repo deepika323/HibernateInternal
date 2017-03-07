@@ -1,6 +1,12 @@
 package model.bean;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Technician implements Comparable<Technician> {
+	
+	@Id
 	String technicianId;
 	String technicianName;
 	String specialization;
@@ -9,6 +15,12 @@ public class Technician implements Comparable<Technician> {
 	long technicianPhoneNo;
 	String technicianPassword;
 	int departmentId;
+	
+	
+	public Technician() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	@Override
 	public String toString() {
 		return "Technician [technicianId=" + technicianId + ", technicianName=" + technicianName + ", specialization="

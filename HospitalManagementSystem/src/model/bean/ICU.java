@@ -1,11 +1,22 @@
 package model.bean;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class ICU {
+	
+	@Id
 	int icuId;
 	String examination;
 	String investigations;
 	String operationDescription;
 	
+	
+	public ICU() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	public int getIcuId() {
 		return icuId;
 	}

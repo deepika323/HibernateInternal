@@ -1,6 +1,15 @@
 package model.bean;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Bill implements Comparable<Bill> {
+	public Bill() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	@Id
 	private int billNo;
 	private int appointmentId;
 	private int serialNo;

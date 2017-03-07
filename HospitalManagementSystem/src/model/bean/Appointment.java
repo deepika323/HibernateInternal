@@ -2,13 +2,24 @@ package model.bean;
 
 import java.sql.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Appointment  {
+	
+	@Id
 	int regNo;
 	String personId;
 	String purpose;
 	float payment;
 	String doctorId;
 	Date appointmentDate;
+	
+	public Appointment() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	
 	@Override
 	public String toString() {
@@ -21,6 +32,7 @@ public class Appointment  {
 	public void setPersonId(String personId) {
 		this.personId = personId;
 	}
+	
 	public int getRegNo() {
 		return regNo;
 	}

@@ -2,6 +2,10 @@ package model.bean;
 
 import java.sql.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Person implements Comparable<Person>{
 	@Override
 	public String toString() {
@@ -75,6 +79,8 @@ public class Person implements Comparable<Person>{
 			return false;
 		return true;
 	}
+	
+	@Id
 	private String personId;
 	private String personIdType;
 	private String personName;
@@ -84,6 +90,12 @@ public class Person implements Comparable<Person>{
 	private String personAddress;
 	private long personPhoneNo;
 	private String personPassword;
+	
+	
+	public Person() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	public String getPersonId() {
 		return personId;
 	}

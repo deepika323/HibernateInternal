@@ -1,6 +1,12 @@
 package model.bean;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Staff implements Comparable<Staff> {
+	
+	@Id
 	String staffId;
 	String staffName;
 	String specialization;
@@ -9,6 +15,12 @@ public class Staff implements Comparable<Staff> {
 	long staffPhoneNo;
 	String staffPassword;
 	int departmentId;
+	
+	
+	public Staff() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	public int getDepartmentId()
 	{
 		return departmentId;

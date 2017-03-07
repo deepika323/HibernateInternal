@@ -10,19 +10,48 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
+
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
 
 import model.bean.Appointment;
 
 public class AppointmentDaoImpl implements AppointmentDao {
 	
-	private PreparedStatement pstmt=null;
-	private Connection con;
-	private ResultSet rs;
+	 SessionFactory factory=new Configuration().configure().buildSessionFactory();    
+	    Transaction t;  
+	    Session session=factory.openSession();
+	
+	//private PreparedStatement pstmt=null;
+	//private Connection con;
+	//private ResultSet rs;
 
 	@Override
 	public boolean insertAppointment(Appointment newAppointment) throws ClassNotFoundException,SQLException, IOException{
-		// TODO Auto-generated method stub
-        con= openConnection();
+		
+		try{
+			t=session.beginTransaction();
+			
+			session.save(newAppointment);
+			
+			t.commit();
+			System.out.println("Record Inserted");
+			return true;
+			}
+			catch(Exception ex){
+				t.rollback();
+			}
+			finally{
+				session.close();
+			}
+			
+			return false;
+		
+       /* con= openConnection();
 		
 		int regNo=newAppointment.getRegNo();
 		String personId=newAppointment.getPersonId();
@@ -51,13 +80,27 @@ public class AppointmentDaoImpl implements AppointmentDao {
 			return true;
 		}
 		else closeConnection(con);
-		return false;
+		return false;*/
 	}
 
 	@Override
 	public boolean deleteAppointment(int regNo) throws ClassNotFoundException,SQLException, IOException {
-		// TODO Auto-generated method stub
-        con= openConnection();
+		
+		try{
+			Appointment appointment=(Appointment) session.get(Appointment.class,regNo);
+			System.out.println("Record Deleted");
+			return true;
+			}
+			catch(Exception ex){
+				System.out.println("Record Not Deleted");
+			}
+			finally{
+				session.close();
+			}
+			
+			return false;
+		
+       /* con= openConnection();
 		
 		
 		pstmt=con.prepareStatement("delete from Appointment where regNo = ?");
@@ -75,13 +118,34 @@ public class AppointmentDaoImpl implements AppointmentDao {
 		{
 			closeConnection(con);
 			return false;
-		}
+		}*/
 	}
 
 	@Override
 	public boolean updateAppointment(int regNo, Appointment renewAppointment) throws ClassNotFoundException,SQLException, IOException {
-		// TODO Auto-generated method stub
-		   con= openConnection();
+		
+		
+
+		try{
+			t=session.beginTransaction();
+			
+			session.save(renewAppointment);
+			
+			t.commit();
+			System.out.println("Record Updated");
+			return true;
+			}
+			catch(Exception ex){
+				t.rollback();
+			}
+			finally{
+				session.close();
+			}
+			
+			return false;
+		
+		
+		/*   con= openConnection();
 			
 			
 			pstmt=con.prepareStatement("update Appointment set  personId =? "
@@ -106,14 +170,27 @@ public class AppointmentDaoImpl implements AppointmentDao {
 				{
 				closeConnection(con);
 				return false;
-				}
+				} */
 
 	}
 
 	@Override
 	public Appointment displayAppointment(int regNo) throws ClassNotFoundException,SQLException, IOException {
-		// TODO Auto-generated method stub
-con= openConnection();
+		
+		
+		try{
+			Appointment appointment=(Appointment) session.get(Appointment.class,regNo);
+			System.out.println("Record Displayed");
+			return appointment;
+			}
+			catch(Exception ex){
+				System.out.println("Record Not Displayed");
+			}
+			finally{
+				session.close();
+			}
+		
+		/*con= openConnection();
 		
 		
 		pstmt=con.prepareStatement("select * from Appointment where regNo = ?");
@@ -133,14 +210,28 @@ con= openConnection();
 			
 		}
 		
-		closeConnection(con);
-		return appointment;
+		closeConnection(con);*/
+		return null;
 	}
 
 	@Override
 	public ArrayList<Appointment> displayAllAppointments() throws ClassNotFoundException,SQLException, IOException {
-		// TODO Auto-generated method stub
-		 con= openConnection();
+		
+		
+		try{
+			Query query=session.createQuery("from Employee");
+			List<Appointment> appList=query.list();
+			System.out.println("Record Displayed");
+			return (ArrayList<Appointment>)appList;
+			}
+			catch(Exception ex){
+				System.out.println("Record Not Displayed");
+			}
+			finally{
+				session.close();
+			}
+		return null;
+		/* con= openConnection();
 			
 			
 			pstmt=con.prepareStatement("select * from appointment ");
@@ -173,7 +264,7 @@ con= openConnection();
 			//System.out.println();
 			//System.out.println();
 
-			return appointmentList;
-	}
+			return appointmentList;*/
+	} 
 
 }
