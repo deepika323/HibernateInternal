@@ -21,12 +21,8 @@ public class AppointmentDaoImpl implements AppointmentDao {
 
 	@Override
 	public boolean insertAppointment(Appointment newAppointment) throws ClassNotFoundException,SQLException, IOException{
-		
-		//Hibernate code for insertAppointment
-		
-		
-		
-      /*  con= openConnection();
+		// TODO Auto-generated method stub
+        con= openConnection();
 		
 		int regNo=newAppointment.getRegNo();
 		String personId=newAppointment.getPersonId();
@@ -55,8 +51,7 @@ public class AppointmentDaoImpl implements AppointmentDao {
 			return true;
 		}
 		else closeConnection(con);
-		return false;*/
-		
+		return false;
 	}
 
 	@Override
