@@ -16,13 +16,14 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.cfg.AnnotationConfiguration;
 import org.hibernate.cfg.Configuration;
 
 import model.bean.Appointment;
 
 public class AppointmentDaoImpl implements AppointmentDao {
 	
-	 SessionFactory factory=new Configuration().configure().buildSessionFactory();    
+	 SessionFactory factory=new AnnotationConfiguration().configure("hibernate.cfg.xml").buildSessionFactory(); 
 	    Transaction t;  
 	    Session session=factory.openSession();
 	
@@ -88,6 +89,7 @@ public class AppointmentDaoImpl implements AppointmentDao {
 		
 		try{
 			Appointment appointment=(Appointment) session.get(Appointment.class,regNo);
+			session.delete(appointment);
 			System.out.println("Record Deleted");
 			return true;
 			}

@@ -92,7 +92,9 @@ public class LogInController extends HttpServlet {
 		 		
 
 		 		try {
+		 			System.out.println(pbl.getHashString(password));
 					if(pbl.personLogin(id, pbl.getHashString(password)).getPersonAge()!=0){
+						System.out.println(pbl.getHashString(password));
 						logger.info("Patient Login Successful");
 						HttpSession session=request.getSession();
 						session.setAttribute("personId",id);
@@ -117,7 +119,7 @@ public class LogInController extends HttpServlet {
 					 out.println("alert('Login Failed!!!');");
 					 out.println("location='./personlogin.jsp';");
 					 out.println("</script>");
-		 			
+					 e.printStackTrace();
 		 		}
 		 	}
 		 	else if(request.getParameter("radios").equals("radio3")){
